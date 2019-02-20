@@ -6,37 +6,37 @@ _start:
 	mov edx,len
 	mov eax,4
 	mov ebx,1
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ebx, 2
 	mov eax, 3
 	mov ecx, enterchoice
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
     
 	mov ecx,entermsg
 	mov edx,entermsglen
 	mov eax,4
 	mov ebx,1
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ebx, 2
 	mov eax, 3
 	mov ecx, num1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ebx, 2
 	mov eax, 3
 	mov ecx, num2
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ebx, 1
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ecx, resultmsg
 	mov edx, resultmsglen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov al,byte [enterchoice]		;casting user input to byte
 
@@ -72,10 +72,10 @@ _addition:
 	mov [digit2], dx
 
 	mov ecx, digit1
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 last_digit:
 	mov eax,[digit2]
@@ -83,16 +83,16 @@ last_digit:
 	mov [digit2],eax
 
 	mov ecx, digit2
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	jmp _exit
 
@@ -104,11 +104,11 @@ _substraction:
 	cmp al,bl
 	jg _subs
 
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov ecx, minus
 	mov edx, minuslen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov al, byte [num2]
 	sub al, '0'
@@ -121,17 +121,17 @@ _subs:
 	mov ah, 0
 	mov [digit1], eax
 
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov ecx, digit1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	jmp _exit
 
@@ -157,10 +157,10 @@ _multiplication:
 	mov [digit2], dx
 
 	mov ecx, digit1
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 last_digit2:
 	mov eax,[digit2]
@@ -168,16 +168,16 @@ last_digit2:
 	mov [digit2],eax
 
 	mov ecx, digit2
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	jmp _exit
 
@@ -187,10 +187,10 @@ _division:
 	xor edx,edx
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov al, byte [num1]
 	sub al, '0'
@@ -205,56 +205,56 @@ _division:
 	mov [digit2], ah
 
 	mov ecx, quotient
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, quotientlen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, digit1
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, remainder
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, remainderlen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, digit2
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, 2
-	int 0x80
+	int 0x80				;call kernel
 
 	mov ecx, newline
-	mov eax, 4
+	mov eax, 4               ;system call number (sys_write)
 	mov ebx, 1
 	mov edx, newlinelen
-	int 0x80
+	int 0x80				;call kernel
 
 _exit:
 	mov eax, 1
-	int 0x80
+	int 0x80				;call kernel
 
 segment .data
 	msg db "Please enter your choice:", 0xA , "	1. Addition", 0xA, "	2. Subtraction", 0xA, "        3. Multiplication", 0xA, "        4. Division", 0xA
