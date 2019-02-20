@@ -196,14 +196,13 @@ _division:
 	sub al, '0'
 	mov bl, byte [num2]
 	sub bl, '0'
-	mov bh, 0
 	mov ah, 0
 
-	div bx
-	add ax,'0'
-	mov [digit1], ax
-	add dx,'0'
-	mov [digit2], dx
+	div bl
+	add al,'0'
+	mov [digit1], al
+	add ah,'0'
+	mov [digit2], ah
 
 	mov ecx, quotient
 	mov eax, 4
