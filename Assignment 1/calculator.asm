@@ -254,6 +254,7 @@ _division:
 
 _exit:
 	mov eax, 1
+	mov ebx, 0
 	int 0x80				;call kernel
 
 segment .data
